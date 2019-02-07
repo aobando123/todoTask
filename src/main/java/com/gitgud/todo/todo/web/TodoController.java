@@ -38,5 +38,29 @@ public class TodoController {
         return todoService.update(todoTask);
     }
 
+    @GetMapping("/find-category")
+    public List<TodoTask> findCategory(@RequestParam("category") String category) {
+        return todoService.findByCategory(category);
+    }
+    @GetMapping("/search-category")
+    public List<TodoTask> findByLikeCategory(@RequestParam("category") String category) {
+        return todoService.findLikeCategory(category);
+    }
+    @GetMapping("/last-results")
+    public List<TodoTask> findByLikeCategory() {
+        return todoService.findByCategoryLastFive();
+    }
+    @GetMapping("/find-results-status")
+    public List<TodoTask> findByStatus(@RequestParam("status") String status) {
+        return todoService.findFirstFiveStatus(status);
+    }
+    @PutMapping("/update-status/{taskId}")
+    public TodoTask updateStatus(@PathVariable Long taskId,@RequestParam("status") String status) {
+        return  todoService.updateStatusTask(taskId, status);
+    }
+    @GetMapping("/creation-date")
+    public  List<TodoTask> findByCreationDate(@RequestParam("createdDate") String createdDate) {
+        return todoService.findByCreatedDate(createdDate);
+    }
 
 }

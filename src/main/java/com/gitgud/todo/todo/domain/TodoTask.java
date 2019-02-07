@@ -9,6 +9,7 @@ public class TodoTask
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
+    @Column
     private String category;
     private String description;
     private String status;
