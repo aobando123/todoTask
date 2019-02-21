@@ -1,6 +1,8 @@
 package com.gitgud.todo.todo.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class TodoTask
@@ -14,6 +16,8 @@ public class TodoTask
     private String description;
     private String status;
     private String createdDate;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<SubTask> subTasks = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -53,5 +57,13 @@ public class TodoTask
 
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public Set<SubTask> getSubTasks() {
+        return subTasks;
+    }
+
+    public void setSubTasks(Set<SubTask> subTasks) {
+        this.subTasks = subTasks;
     }
 }
